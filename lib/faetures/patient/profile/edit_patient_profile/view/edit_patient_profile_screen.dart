@@ -1,0 +1,333 @@
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:healthcare_hub/core/Const/app_colors.dart';
+import 'package:healthcare_hub/core/Const/app_images.dart';
+import 'package:healthcare_hub/core/utils/app_sizes.dart';
+import 'package:healthcare_hub/core/widgets/custom_appbar.dart';
+import 'package:healthcare_hub/core/widgets/custom_text_widget.dart';
+import '../../../../../core/widgets/custom_dropdown.dart';
+import '../../../../../core/widgets/custom_elevated_button.dart';
+import '../../../../../core/widgets/custom_input_textfield.dart';
+import '../controller/edit_patient_profile_controller.dart';
+
+class PatientEditProfileScreen extends StatelessWidget {
+  final controller = Get.put(PatientEditProfileController());
+  final AppSizes appSizes = AppSizes();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CustomAppBar(title: "Edit Profile",goBack: true,),
+      body: SingleChildScrollView(
+        padding: appSizes.getCustomPadding(),
+        child: Column(
+          children: [
+            Obx(() {
+              final file = controller.imagePicker.selectedImage.value;
+              final imageUrl = controller.imageUrl.value;
+              ImageProvider imageProvider;
+              if (file != null) {
+                imageProvider = FileImage(file);
+              } else if (imageUrl.isNotEmpty) {
+                imageProvider = NetworkImage(imageUrl);
+              } else {
+                imageProvider = AssetImage(AppImages.maleDr);
+              }
+              return GestureDetector(
+                onTap: () {
+                  controller.imagePicker.showImagePickerDialog();
+                },
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundColor: Colors.grey.shade300,
+                  backgroundImage: imageProvider,
+                ),
+              );
+            }),
+
+            Gap(18),
+            CustomInputTextField(
+              hintText: "First Name",
+              textEditingController: controller.firstNameController,
+              emptyValueErrorText: "Enter first name",
+              isValidator: true,
+            ),
+            Gap(12),
+            CustomInputTextField(
+              hintText: "Middle Name",
+              textEditingController: controller.middleNameController,
+              emptyValueErrorText: "Enter middle name",
+              isValidator: false,
+            ),
+            Gap(12),
+            CustomInputTextField(
+              hintText: "Last Name",
+              textEditingController: controller.lastNameController,
+              emptyValueErrorText: "Enter last name",
+              isValidator: true,
+            ),
+            Gap(12),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now().subtract(
+                        const Duration(days: 365 * 18),
+                      ),
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime.now(),
+                    );
+
+                    if (pickedDate != null) {
+                      controller.setBirthDate(pickedDate);
+                    }
+                  },
+                  child: AbsorbPointer(
+                    child: CustomInputTextField(
+                      textEditingController: controller.ageController,
+                      hintText: "Select your date of birth",
+                      isValidator: true,
+                      numberKeyboard: false,
+                      filledColor: AppColors.white,
+                      emptyValueErrorText: "Please select your date of birth",
+                    ),
+                  ),
+                ),
+                const Gap(16),
+                CustomInputTextField(
+                  textEditingController: controller.idCardController,
+                  hintText: "Enter ID card number",
+                  isValidator: true,
+                  numberKeyboard: true,
+                  filledColor: AppColors.white,
+                  emptyValueErrorText: "Please enter your ID Card number",
+                ),
+              ],
+            ),
+            Gap(12),
+            CustomInputTextField(
+              textEditingController: controller.insuranceCardController,
+              hintText: "Enter insurance card number",
+              isValidator: true,
+              numberKeyboard: true,
+              filledColor: AppColors.white,
+              emptyValueErrorText: "Please enter your insurance card number",
+            ),
+            Gap(12),
+            CustomInputTextField(
+              hintText: "Phone Number",
+              textEditingController: controller.phoneNumberController,
+              emptyValueErrorText: "Enter phone number",
+              isValidator: false,
+              numberKeyboard: true,
+              maxLength: 10,
+              counterColor: AppColors.blackish,
+            ),
+            Gap(12),
+            Obx(
+              () => CustomDropdown(
+                onWhite: true,
+                items: controller.bloodGroups,
+                selectedValue: controller.selectedBloodGroup.value,
+                haveBorders: true,
+                onChanged: (selectedValue) {
+                  controller.updateBloodGroup(selectedValue!);
+                },
+                hintText: "Your blood group",
+              ),
+            ),
+            Gap(12),
+            CustomInputTextField(
+              hintText: "Height",
+              textEditingController: controller.heightController,
+              emptyValueErrorText: "Enter height",
+              isValidator: false,
+              numberKeyboard: true,
+              maxLength: 2,
+              counterColor: AppColors.blackish,
+            ),
+            Gap(12),
+            CustomInputTextField(
+              hintText: "Weight",
+              textEditingController: controller.weightController,
+              emptyValueErrorText: "Enter weight",
+              isValidator: false,
+              numberKeyboard: true,
+              maxLength: 3,
+              counterColor: AppColors.blackish,
+            ),
+            Gap(12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Obx(
+                  () => Radio(
+                    value: 'Male',
+                    activeColor: AppColors.blue,
+                    groupValue: controller.gender.value,
+                    onChanged: (value) => controller.gender.value = value!,
+                  ),
+                ),
+                const CustomTextWidget(
+                  textAlign: TextAlign.start,
+                  text: 'Male',
+                  textColor: AppColors.blue,
+                ),
+                const Gap(16),
+                Obx(
+                  () => Radio(
+                    value: 'Female',
+                    activeColor: AppColors.blue,
+                    groupValue: controller.gender.value,
+                    onChanged: (value) => controller.gender.value = value!,
+                  ),
+                ),
+                const CustomTextWidget(
+                  textAlign: TextAlign.start,
+                  text: 'Female',
+                  textColor: AppColors.blue,
+                ),
+              ],
+            ),
+            Gap(12),
+            CustomInputTextField(
+              hintText: "About",
+              maxLines: 4,
+              textEditingController: controller.aboutController,
+              emptyValueErrorText: "About",
+              isValidator: false,
+            ),
+            Gap(12),
+            Align(
+              alignment: Alignment.topLeft,
+              child: CustomTextWidget(
+                text: "Medical Reports:",
+                fontSize: 17,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Gap(8),
+            Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppColors.blueish,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.blackish),
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.picture_as_pdf, color: AppColors.white, size: 32),
+                  Gap(12),
+                  Expanded(
+                    child: Obx(() => CustomTextWidget(
+                      textAlign: TextAlign.start,
+                      text: controller.selectedPdfFile.value != null
+                          ? "View Medical PDF"
+                          : "PDF Selected",
+                      fontSize: 16,
+                      textColor: AppColors.white,
+                    )),
+                  ),
+                  Icon(Icons.open_in_new, color: AppColors.white),
+                ],
+              ),
+            ),
+            Gap(12),
+            CustomElevatedButton(
+              backgroundColor: AppColors.blueish,
+              onPress: () {
+                controller.pickPDF();
+              },
+              text: "Upload Report",
+            ),
+            Gap(16),
+            Align(
+              alignment: Alignment.topLeft,
+              child: CustomTextWidget(
+                text: "Emergency Contact Detail",
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+              ),
+            ),
+            Gap(12),
+            CustomInputTextField(
+              hintText: "Guardian name",
+              textEditingController: controller.guardianNameController,
+              emptyValueErrorText: "Guardian name",
+              isValidator: false,
+            ),
+            Gap(12),
+            CustomInputTextField(
+              hintText: "Guardian relationship",
+              textEditingController: controller.guardianRelationController,
+              emptyValueErrorText: "Guardian relationship",
+              isValidator: false,
+            ),
+            Gap(12),
+            CustomInputTextField(
+              hintText: "Guardian id card number",
+              textEditingController: controller.guardianIDCardController,
+              emptyValueErrorText: "Guardian id card number",
+              isValidator: false,
+            ),
+            Gap(12),
+            CustomInputTextField(
+              hintText: "Guardian phone number",
+              textEditingController: controller.guardianPhoneController,
+              emptyValueErrorText: "Guardian phone number",
+              isValidator: false,
+              maxLength: 10,
+            ),
+            Gap(12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Obx(
+                      () => Radio(
+                    value: 'Male',
+                    activeColor: AppColors.blue,
+                    groupValue: controller.guardianGender.value,
+                    onChanged: (value) => controller.guardianGender.value = value!,
+                  ),
+                ),
+                const CustomTextWidget(
+                  textAlign: TextAlign.start,
+                  text: 'Male',
+                  textColor: AppColors.blue,
+                ),
+                const Gap(16),
+                Obx(
+                      () => Radio(
+                    value: 'Female',
+                    activeColor: AppColors.blue,
+                    groupValue: controller.guardianGender.value,
+                    onChanged: (value) => controller.guardianGender.value = value!,
+                  ),
+                ),
+                const CustomTextWidget(
+                  textAlign: TextAlign.start,
+                  text: 'Female',
+                  textColor: AppColors.blue,
+                ),
+              ],
+            ),
+            Gap(30),
+            Obx(
+              () => CustomElevatedButton(
+                isLoading: controller.isLoading.value,
+                text: "Update Now",
+                onPress: () async {
+                  await controller.updateProfile();
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
