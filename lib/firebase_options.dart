@@ -50,21 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDa__zEouUu4yUGV7U2Tv2MmCjKvJJD2Fg',
-    appId: '1:452022753540:android:2570a3a9b9985c43d8d851',
-    messagingSenderId: '452022753540',
-    projectId: 'civitante',
-    storageBucket: 'civitante.firebasestorage.app',
+    apiKey: 'AIzaSyBrHsuPAsfRomoFyt4pTlBMNsbCudI8DSY',
+    appId: '1:687268024380:android:dfe28c5ac56519faef7339',
+    messagingSenderId: '687268024380',
+    projectId: 'healthcare-hub-e0e32',
+    storageBucket: 'healthcare-hub-e0e32.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAkYIVbEOR9bu_ScqDXrwxq816WL3oHrZQ',
-    appId: '1:452022753540:ios:16c85cb3520a84e8d8d851',
-    messagingSenderId: '452022753540',
-    projectId: 'civitante',
-    storageBucket: 'civitante.firebasestorage.app',
-    androidClientId: '452022753540-4fplhmji9fhpv79rf79s1tjpihq1hrp4.apps.googleusercontent.com',
-    iosClientId: '452022753540-9ocg2e84jg9u195dad3m2tvs6bvvkta0.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDmQZF2m6eyapgI7hlmHDoDVo2bNJoOpZc',
+    appId: '1:687268024380:ios:0d5379e5194e83ddef7339',
+    messagingSenderId: '687268024380',
+    projectId: 'healthcare-hub-e0e32',
+    storageBucket: 'healthcare-hub-e0e32.firebasestorage.app',
     iosBundleId: 'com.healthcare.healthcareHub',
   );
+
 }

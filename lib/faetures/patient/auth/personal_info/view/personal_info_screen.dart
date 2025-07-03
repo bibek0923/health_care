@@ -25,13 +25,13 @@ class PersonalInfoScreen extends StatelessWidget {
           body: SingleChildScrollView(
             child: Container(
               margin: appSizes.getCustomPadding(
-                left: 6,
-                right: 6,
-                top: 8,
+                left: 3,
+                right: 3,
+                top: 6,
                 bottom: 6,
               ),
               width: appSizes.getWidthPercentage(100),
-              padding: appSizes.getCustomPadding(right: 6, left: 6),
+              padding: appSizes.getCustomPadding(right: 3, left: 3),
               decoration: BoxDecoration(
                 color: AppColors.blue,
                 borderRadius: BorderRadius.circular(18),
@@ -39,7 +39,7 @@ class PersonalInfoScreen extends StatelessWidget {
                   BoxShadow(
                     color: AppColors.black,
                     spreadRadius: -1,
-                    blurRadius: 8,
+                    blurRadius: 10,
                   ),
                 ],
               ),
@@ -78,6 +78,7 @@ class PersonalInfoScreen extends StatelessWidget {
                               },
                               child: AbsorbPointer(
                                 child: CustomInputTextField(
+                                  
                                   textEditingController:
                                       controller.dobController,
                                   hintText: "Select your date of birth",
@@ -130,18 +131,18 @@ class PersonalInfoScreen extends StatelessWidget {
                         emptyValueErrorText: "Please enter your phone number",
                       ),
                       const Gap(4),
-                      Obx(
-                        () => CustomDropdown(
-                          items: controller.bloodGroups,
-                          selectedValue: controller.selectedBloodGroup.value,
-                          haveBorders: true,
-                          onChanged: (selectedValue) {
-                            controller.updateBloodGroup(selectedValue!);
-                          },
-                          hintText: "Your blood group",
-                        ),
-                      ),
-                      const Gap(16),
+                      // Obx(
+                      //   () => CustomDropdown(
+                      //     items: controller.bloodGroups,
+                      //     selectedValue: controller.selectedBloodGroup.value,
+                      //     haveBorders: true,
+                      //     onChanged: (selectedValue) {
+                      //       controller.updateBloodGroup(selectedValue!);
+                      //     },
+                      //     hintText: "Your blood group",
+                      //   ),
+                      // ),
+                      // const Gap(16),
                       CustomInputTextField(
                         textEditingController: controller.heightController,
                         hintText: "Enter your Height (Feet)",
@@ -167,55 +168,56 @@ class PersonalInfoScreen extends StatelessWidget {
                       CustomInputTextField(
                         textEditingController: controller.aboutController,
                         hintText: "About",
-                        isValidator: true,
+                        isValidator: false,
                         isFilled: true,
                         maxLines: 4,
                         filledColor: AppColors.white,
                         emptyValueErrorText: "Please enter about you",
                       ),
-                      Gap(16),
-                      CustomOutlineButton(
-                        onPress: controller.pickPDF,
-                        borderColor: AppColors.white,
-                        text: "Select Reports",
-                        textColor: AppColors.white,
-                      ),
-                      Gap(18),
-                      Obx(() {
-                        final pdfFile = controller.pickedPDF.value;
-                        if (pdfFile != null) {
-                          return Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: AppColors.whitish2,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: AppColors.whitish),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.picture_as_pdf,
-                                  color: AppColors.red,
-                                  size: 32,
-                                ),
-                                Gap(4),
-                                Expanded(
-                                  child: CustomTextWidget(
-                                    text: pdfFile.path.split('/').last,
-                                    textColor: AppColors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        } else {
-                          return CustomTextWidget(
-                            text: "No Report selected",
-                            textColor: AppColors.white,
-                          );
-                        }
-                      }),
-                      const Gap(16),
+                      // Gap(16),
+                      // CustomOutlineButton(
+                      //   onPress: controller.pickPDF,
+                      //   borderColor: AppColors.white,
+                      //   text: "Select Reports",
+                      //   textColor: AppColors.white,
+                      // ),
+                      // Gap(18),
+                      // Obx(() {
+                      //   final pdfFile = controller.pickedPDF.value;
+                      //   if (pdfFile != null) {
+                      //     return Container(
+                      //       padding: EdgeInsets.all(8),
+                      //       decoration: BoxDecoration(
+                      //         color: AppColors.whitish2,
+                      //         borderRadius: BorderRadius.circular(12),
+                      //         border: Border.all(color: AppColors.whitish),
+                      //       ),
+                      //       child: Row(
+                      //         children: [
+                      //           Icon(
+                      //             Icons.picture_as_pdf,
+                      //             color: AppColors.red,
+                      //             size: 32,
+                      //           ),
+                      //           Gap(4),
+                      //           Expanded(
+                      //             child: CustomTextWidget(
+                      //               text: pdfFile.path.split('/').last,
+                      //               textColor: AppColors.white,
+                      //             ),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     );
+                      //   } else {
+                      //     return CustomTextWidget(
+                      //       text: "No Report selected",
+                      //       textColor: AppColors.white,
+                      //     );
+                      //   }
+                      // }),
+                      // const Gap(16),
+                      const Gap(4),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -275,11 +277,7 @@ class PersonalInfoScreen extends StatelessWidget {
                                 onPress: () {
                                   if (controller.formKey.currentState!
                                       .validate()) {
-                                    if (controller.pickedPDF.value == null) {
-                                      controller.toast.showCustomToast(
-                                        "Please add your report",
-                                      );
-                                    } else {
+                                     
                                       Get.toNamed(
                                         AppRoutes.GUARDIANINFOSCREEN,
                                         arguments: {
@@ -299,16 +297,16 @@ class PersonalInfoScreen extends StatelessWidget {
                                           "dob":
                                               controller.dobController.text
                                                   .trim(),
-                                          "bloodGroup":
-                                              controller
-                                                  .selectedBloodGroup
-                                                  .value,
+                                          // "bloodGroup":
+                                          //     controller
+                                          //         .selectedBloodGroup
+                                          //         .value,
                                           "about":
                                               controller.aboutController.text
                                                   .trim(),
                                           "gender":
                                               controller.selectedGender.value,
-                                          "report": controller.pickedPDF.value,
+                                          // "report": controller.pickedPDF.value,
                                           "height":
                                               controller.heightController.text
                                                   .trim(),
@@ -319,8 +317,8 @@ class PersonalInfoScreen extends StatelessWidget {
                                       );
                                       controller.refreshField();
                                     }
-                                  }
-                                },
+                                  },
+                                
                                 text: "NEXT",
                               ),
                             ),

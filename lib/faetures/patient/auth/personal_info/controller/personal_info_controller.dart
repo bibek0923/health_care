@@ -69,6 +69,7 @@ class PersonalInfoController extends GetxController {
     selectedGender.value = 'Male';
     pickedPDF = Rxn<File>();
     aboutController.clear();
+    insuranceCardController.clear();
   }
 
   @override

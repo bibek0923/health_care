@@ -35,12 +35,15 @@ class DrSignUpController extends GetxController {
         emailController.text.trim(),
         createPasswordController.text.trim(),
       );
+
       final String? doctorId = FirebaseAuth.instance.currentUser?.uid;
 
       if (doctorId == null) {
         throw Exception("Unable to retrieve doctor ID.");
       }
-      imagePicker.selectedImage.value != null? await storage.uploadImage(imagePicker.selectedImage.value!):null;
+      imagePicker.selectedImage.value != null
+          ? await storage.uploadImage(imagePicker.selectedImage.value!)
+          : null;
       final String uploadedImageUrl = storage.imageUrl.value;
       final doctor = DoctorModel(
         doctorId: doctorId,
@@ -48,7 +51,8 @@ class DrSignUpController extends GetxController {
         middleName: middleNameController.text.trim(),
         lastName: lastNameController.text.trim(),
         email: emailController.text.trim(),
-        imageUrl: imagePicker.selectedImage.value != null ?uploadedImageUrl:'',
+        imageUrl:
+            imagePicker.selectedImage.value != null ? uploadedImageUrl : '',
       );
       await fireStore
           .storeDataWithUserID<DoctorModel>(

@@ -24,10 +24,10 @@ class GuardianInfoScreen extends StatelessWidget {
     final String dob = Get.arguments["dob"];
     final String height = Get.arguments["height"];
     final String weight = Get.arguments["weight"];
-    final String bloodGroup = Get.arguments["bloodGroup"];
+    // final String bloodGroup = Get.arguments["bloodGroup"];
     final String about = Get.arguments["about"];
     final String gender = Get.arguments["gender"];
-    final File report = Get.arguments["report"];
+    // final File report = Get.arguments["report"];
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
@@ -179,11 +179,11 @@ class GuardianInfoScreen extends StatelessWidget {
                                               insuranceCardNumber,
                                           weight: weight,
                                           height: height,
-                                          report: report,
+                                          // report: report,
                                           idCardNumber: idCardNumber,
                                           phoneNumber: phoneNumber,
                                           age: dob,
-                                          bloodGroup: bloodGroup,
+                                          // bloodGroup: bloodGroup,
                                           about: about,
                                           gender: gender,
                                         );

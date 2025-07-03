@@ -29,16 +29,16 @@ class GuardianInfoController extends GetxController {
     required String insuranceCardNumber,
     required String phoneNumber,
     required String age,
-    required String bloodGroup,
+    // required String bloodGroup,
     required String about,
     required String gender,
     required String height,
     required String weight,
-    required File report,
+    // required File report,
   }) async {
     try {
       isLoading.value = true;
-      await storage.uploadReports([report]);
+      // await storage.uploadReports([report]);
       final String uploadedReportUrl = storage.reportUrls!.first;
       log("Uploaded Pdf Url: $uploadedReportUrl");
       await fireStore
@@ -53,10 +53,10 @@ class GuardianInfoController extends GetxController {
               'height': height,
               'weight': weight,
               'age': age,
-              'bloodGroup': bloodGroup,
+              // 'bloodGroup': bloodGroup,
               'about': about,
               'gender': gender,
-              'reportUrl': uploadedReportUrl,
+              // 'reportUrl': uploadedReportUrl,
               'guardianName': guardianNameController.text.trim(),
               'guardianIdCard': guardianIdCardController.text.trim(),
               'guardianPhoneNumber': guardianPhoneController.text.trim(),
@@ -79,6 +79,7 @@ class GuardianInfoController extends GetxController {
     guardianNameController.clear();
     guardianIdCardController.clear();
     guardianPhoneController.clear();
+    relationShipController.clear();
     formKey = GlobalKey<FormState>();
   }
 
