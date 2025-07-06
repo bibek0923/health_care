@@ -81,8 +81,7 @@ class DoctorDetailsScreen extends StatelessWidget {
                 ),
                 Gap(12),
                 CustomRow(text: doctor.email, icon: CupertinoIcons.mail),
-                // Gap(8),
-                // CustomRow(text: doctor.phoneNumber!, icon: CupertinoIcons.phone),
+               
                 Gap(12),
                 Divider(),
                 CustomTextWidget(
@@ -97,57 +96,7 @@ class DoctorDetailsScreen extends StatelessWidget {
                   text: "Department: ${doctor.department}",
                   icon: CupertinoIcons.heart,
                 ),
-                // Gap(12),
-                // Divider(),
-                // CustomTextWidget(
-                //   text: "Certificates:",
-                //   fontSize: 17,
-                //   fontWeight: FontWeight.w500,
-                // ),
-                // Gap(8),
-                // ListView.separated(
-                //   shrinkWrap: true,
-                //   physics: NeverScrollableScrollPhysics(),
-                //   itemCount: doctor.degreesUrl!.length,
-                //   itemBuilder: (context, index) {
-                //     return GestureDetector(
-                //       onTap: () async {
-                //         Get.to(PdfViewerScreen(url: doctor.degreesUrl![index]));
-                //       },
-                //       child: Container(
-                //         padding: EdgeInsets.all(8),
-                //         decoration: BoxDecoration(
-                //           color: AppColors.blueish,
-                //           borderRadius: BorderRadius.circular(12),
-                //           border: Border.all(color: AppColors.blackish),
-                //         ),
-                //         child: Row(
-                //           children: [
-                //             Icon(
-                //               Icons.picture_as_pdf,
-                //               color: AppColors.white,
-                //               size: 32,
-                //             ),
-                //             Gap(12),
-                //             Expanded(
-                //               child: CustomTextWidget(
-                //                 textAlign: TextAlign.start,
-                //                 text: "${index} - View Certificate PDF",
-                //                 fontSize: 16,
-                //                 textColor: AppColors.white,
-                //               ),
-                //             ),
-                //             Icon(Icons.open_in_new, color: AppColors.white),
-                //           ],
-                //         ),
-                //       ),
-                //     );
-                //   },
-                //   separatorBuilder: (BuildContext context, int index) {
-                //     return Gap(6);
-                //   },
-                // ),
-                // Gap(12),
+              
                 Divider(),
                 CustomTextWidget(
                   text: "Appointments",

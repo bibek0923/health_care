@@ -73,6 +73,9 @@ class DrSignUpController extends GetxController {
     if (value == null || value.isEmpty) {
       return "Please enter your License number";
     }
+    if(value.length>15){
+      return "Only 15 letters/digits only";
+    }
     if (!RegExp(r'^[a-zA-Z0-9]{1,15}$').hasMatch(value)) {
       return "License number should be up to 15 letters/digits only";
     }

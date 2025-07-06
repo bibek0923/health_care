@@ -61,15 +61,7 @@ class DrAppointmentDetailsScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                           textColor: AppColors.white,
                         ),
-                        // SizedBox(
-                        //   width: appSizes.getWidthPercentage(50),
-                        //   child: CustomTextWidget(
-                        //     text: patientModel.about!,
-                        //     textColor: AppColors.whitish,
-                        //     textOverflow: TextOverflow.visible,
-                        //     textAlign: TextAlign.start,
-                        //   ),
-                        // ),
+                        
                         SizedBox(
                           width: appSizes.getWidthPercentage(50),
                           child: CustomTextWidget(

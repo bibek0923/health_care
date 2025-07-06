@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthcare_hub/core/Const/app_colors.dart';
 
-import 'package:healthcare_hub/faetures/patient/profile/edit_patient_profile/controller/edit_patient_profile_controller.dart';
+import 'package:healthcare_hub/features/patient/profile/edit_patient_profile/controller/edit_patient_profile_controller.dart';
 
 class HeightInputDropdown extends StatelessWidget {
   HeightInputDropdown({super.key});

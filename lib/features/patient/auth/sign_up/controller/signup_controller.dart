@@ -35,7 +35,7 @@ class SignUpController extends GetxController {
   RxBool isLoading = false.obs;
   RxString selectedGender = 'Male'.obs;
   RxBool isAbove18 = false.obs;
-RxBool isInitialized1 =false.obs;
+  RxBool isInitialized1 = false.obs;
   // String? errorText  ;
   RxBool showHeightError = false.obs;
   RxBool showWeightError = false.obs;
@@ -69,27 +69,12 @@ RxBool isInitialized1 =false.obs;
     return age;
   }
 
-  // String? heightValidator(String?  value){
-  //   if(value ==null || value.trim().isEmpty  ){
-  //     // return "Please enter heightttt";
-  //     errorText='Please Enter Heighttttt';
-  //     // return '';
-  //   }
-  //   return null;
-
-  // }
-
   // height validator
   String? heightValidator(String? value) {
     if (value == null || value.trim().isEmpty) {
       showHeightError.value = true;
       return ''; // Return empty string to hide default error
-    }
-    // else if(value.length>3){
-    //   heightErrorMessage='Enter Valid Value';
-    //   return '';
-    // }
-    else {
+    } else {
       showHeightError.value = false;
       return null;
     }
@@ -99,12 +84,7 @@ RxBool isInitialized1 =false.obs;
     if (value == null || value.trim().isEmpty) {
       showWeightError.value = true;
       return ''; // Return empty string to hide default error
-    }
-    // else if(value.length>3){
-    //   heightErrorMessage='Enter Valid Value';
-    //   return '';
-    // }
-    else {
+    } else {
       showWeightError.value = false;
       return null;
     }
@@ -113,26 +93,18 @@ RxBool isInitialized1 =false.obs;
   void clearHeightError() {
     showWeightError.value = false;
   }
-String? validateAbout(String? value){
-    if(value==null || value.trim().isEmpty){
+
+  String? validateAbout(String? value) {
+    if (value == null || value.trim().isEmpty) {
       return null;
     }
-    if (value.length>150){
+    if (value.length > 150) {
       return "Enter upto 150 letters";
     }
     return null;
   }
-  // String? validateInsuranceCard(String? value) {
-  //   if (value == null || value.trim().isEmpty) {
-  //     return null;
-  //   }
-  //   if (!RegExp(r'^\d+$').hasMatch(value.trim())) {
-  //     return "Insurance card must contain digits only";
-  //   }
-  //   return null;
-  // }
-  
-String? validateInsuranceCard(String? value) {
+
+  String? validateInsuranceCard(String? value) {
     if (value == null || value.isEmpty) {
       return null;
     }
@@ -141,6 +113,7 @@ String? validateInsuranceCard(String? value) {
     }
     return null;
   }
+
   String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return "Password is required";
@@ -236,11 +209,7 @@ String? validateInsuranceCard(String? value) {
           ? await storage.uploadImage(imagePicker.selectedImage.value!)
           : null;
       final String uploadedImageUrl = storage.imageUrl.value;
-      // print(dobController.text.trim(),);
-      // print(weightController.text.trim(),);
-      // print( selectedGender.value,);
-      // print(selectedHeightUnit.value);
-      // print(idCardController.text);
+
       PatientModel patient = PatientModel(
         id: patientId,
         firstName: firstNameController.text.trim(),
@@ -257,7 +226,6 @@ String? validateInsuranceCard(String? value) {
         idCardNumber: idCardController.text,
         heightUnit: selectedHeightUnit.value,
         weightUnit: selectedWeightUnit.value,
-
       );
 
       await fireStore

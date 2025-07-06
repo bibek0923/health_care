@@ -9,7 +9,7 @@ import 'package:healthcare_hub/core/widgets/custom_appbar.dart';
 import 'package:healthcare_hub/core/widgets/custom_outline_button.dart';
 import 'package:healthcare_hub/data/models/appointment_model.dart';
 import 'package:healthcare_hub/data/models/patient_model.dart';
-import 'package:healthcare_hub/faetures/patient/profile/edit_patient_profile/controller/edit_patient_profile_controller.dart';
+import 'package:healthcare_hub/features/patient/profile/edit_patient_profile/controller/edit_patient_profile_controller.dart';
 import '../../../../../core/widgets/custom_appointment_container.dart';
 import '../../../../../core/widgets/custom_row.dart';
 import '../../../../../core/widgets/custom_text_widget.dart';
@@ -73,19 +73,14 @@ class PatientProfileScreen extends StatelessWidget {
                               text: "Date of birth: ${patient.age}"
                               ,fontSize: 16, fontWeight: FontWeight.w400,
                             ),
-                            // CustomTextWidget(
-                            //   text:
-                            //       patient.bloodGroup == "Don't know"
-                            //           ? "Blood Type: N/A"
-                            //           : "Blood Type: ${patient.bloodGroup}",
-                            // ),
+                           
                             CustomTextWidget(text: "Height: ${patient.height} ${patient.heightUnit}",fontSize: 16, fontWeight: FontWeight.w400,),
                             CustomTextWidget(text: "Weight: ${patient.weight} ${patient.weightUnit}",fontSize: 16, fontWeight: FontWeight.w400,),
                             CustomTextWidget(text: "Gender: ${patient.gender}",fontSize: 16, fontWeight: FontWeight.w400,),
                             Gap(10),
                             CustomTextWidget(
                               text: patient.about!,
-                              // textColor: AppColors.blackish,
+                              
                               fontSize: 16, fontWeight: FontWeight.w400,
                             ),
                           ],
@@ -124,53 +119,16 @@ class PatientProfileScreen extends StatelessWidget {
                         icon: CupertinoIcons.person_2,
                       ),
                       Gap(8),
-                      // CustomRow(
-                      //   text: patient.phoneNumber!,
-                      //   icon: CupertinoIcons.phone,
-                      // ),
-                      Gap(8),
+                      
+                     
                       CustomRow(
                         text: patient.insuranceCard!,
                         icon: CupertinoIcons.creditcard,
                       ),
-                      Gap(12),
-                      // Divider(),
-                      // CustomTextWidget(
-                      //   text: "Emergency Contact Info:",
-                      //   fontSize: 17,
-                      //   fontWeight: FontWeight.w500,
-                      // ),
-                      // Gap(12),
-                      // CustomRow(
-                      //   text: patient.guardianName!,
-                      //   icon: CupertinoIcons.person,
-                      // ),
-                      // Gap(8),
-                      // CustomRow(
-                      //   text: controller.formatIdCardNumber(
-                      //     patient.guardianIdCard!,
-                      //   ),
-                      //   icon: CupertinoIcons.creditcard,
-                      // ),
-                      // Gap(8),
-                      // CustomRow(
-                      //   text: patient.guardianGender!,
-                      //   icon:
-                      //       patient.guardianGender! == "Male"
-                      //           ? Icons.male
-                      //           : Icons.female,
-                      // ),
-                      // Gap(8),
-                      // CustomRow(
-                      //   text: patient.guardianRelationShip!,
-                      //   icon: CupertinoIcons.person_2,
-                      // ),
-                      // Gap(8),
-                      // CustomRow(
-                      //   text: patient.guardianPhoneNumber!,
-                      //   icon: CupertinoIcons.phone,
-                      // ),
-                      Gap(12),
+                      
+                      Gap(24),
+                     
+                      
                       Divider(),
                       CustomTextWidget(
                         text: "Medical Reports:",

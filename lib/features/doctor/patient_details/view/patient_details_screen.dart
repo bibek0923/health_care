@@ -36,36 +36,46 @@ class PatientDetailsScreen extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 50,
-                        backgroundImage: patient!.imageUrl != null && patient.imageUrl!.isNotEmpty
-      ? NetworkImage(patient.imageUrl!)
-      : AssetImage(patient.gender?.toLowerCase() == 'female'
-              ? AppImages.femalePatient
-              : AppImages.malePatient,),
+                        backgroundImage:
+                            patient!.imageUrl != null &&
+                                    patient.imageUrl!.isNotEmpty
+                                ? NetworkImage(patient.imageUrl!)
+                                : AssetImage(
+                                  patient.gender?.toLowerCase() == 'female'
+                                      ? AppImages.femalePatient
+                                      : AppImages.malePatient,
+                                ),
                       ),
                       Gap(12),
                       CustomTextWidget(
                         text:
-                        "${patient.firstName} ${patient.middleName} ${patient.lastName}",
+                            "${patient.firstName} ${patient.middleName} ${patient.lastName}",
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
                       ),
+                      CustomTextWidget(text: "Date of birth: ${patient.age}"),
+
                       CustomTextWidget(
-                        text: "Date of birth: ${patient.age}",
+                        text: "Height: ${patient.height} ${patient.heightUnit}",
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
                       ),
-                      // CustomTextWidget(
-                      //   text:
-                      //   patient.bloodGroup == "Don't know"
-                      //       ? "Blood Type: N/A"
-                      //       : "Blood Type: ${patient.bloodGroup}",
-                      // ),
-                      CustomTextWidget(text: "Height: ${patient.height} ${patient.heightUnit}",fontSize: 16, fontWeight: FontWeight.w400,),
-                      CustomTextWidget(text: "Weight: ${patient.weight} ${patient.weightUnit}",fontSize: 16, fontWeight: FontWeight.w400,),
-                      CustomTextWidget(text: "Gender: ${patient.gender}",fontSize: 16, fontWeight: FontWeight.w400,),
+                      CustomTextWidget(
+                        text: "Weight: ${patient.weight} ${patient.weightUnit}",
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      CustomTextWidget(
+                        text: "Gender: ${patient.gender}",
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
                       Gap(6),
                       CustomTextWidget(
                         text: patient.about!,
                         textColor: AppColors.blackish,
-                        fontSize: 14, fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
                       ),
                     ],
                   ),
@@ -84,49 +94,9 @@ class PatientDetailsScreen extends StatelessWidget {
                   text: controller.formatIdCardNumber(patient.idCardNumber!),
                   icon: CupertinoIcons.creditcard,
                 ),
-                // Gap(8),
-                // CustomRow(
-                //   text: patient.phoneNumber!,
-                //   icon: CupertinoIcons.phone,
-                // ),
+
                 Gap(12),
-                // Divider(),
-                // CustomTextWidget(
-                //   text: "Emergency Contact Info:",
-                //   fontSize: 17,
-                //   fontWeight: FontWeight.w500,
-                // ),
-                // Gap(12),
-                // CustomRow(
-                //   text: patient.guardianName!,
-                //   icon: CupertinoIcons.person,
-                // ),
-                // Gap(8),
-                // CustomRow(
-                //   text: controller.formatIdCardNumber(
-                //     patient.guardianIdCard!,
-                //   ),
-                //   icon: CupertinoIcons.creditcard,
-                // ),
-                // Gap(8),
-                // CustomRow(
-                //   text: patient.guardianGender!,
-                //   icon:
-                //   patient.guardianGender! == "Male"
-                //       ? Icons.male
-                //       : Icons.female,
-                // ),
-                // Gap(8),
-                // CustomRow(
-                //   text: patient.guardianRelationShip!,
-                //   icon: CupertinoIcons.person_2,
-                // ),
-                // Gap(8),
-                // CustomRow(
-                //   text: patient.guardianPhoneNumber!,
-                //   icon: CupertinoIcons.phone,
-                // ),
-                // Gap(12),
+
                 Divider(),
                 CustomTextWidget(
                   text: "Medical Reports:",

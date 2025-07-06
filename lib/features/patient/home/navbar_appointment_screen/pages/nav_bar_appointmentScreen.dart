@@ -8,7 +8,7 @@ import 'package:healthcare_hub/core/widgets/custom_appointment_container.dart';
 import 'package:healthcare_hub/core/widgets/custom_text_widget.dart';
 import 'package:healthcare_hub/data/models/appointment_model.dart';
 
-import 'package:healthcare_hub/faetures/patient/profile/patient_profile/controller/patient_profile_controller.dart';
+import 'package:healthcare_hub/features/patient/profile/patient_profile/controller/patient_profile_controller.dart';
 
 class NavAppointmentScreen extends StatelessWidget {
   NavAppointmentScreen({super.key});

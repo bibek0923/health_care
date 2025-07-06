@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:healthcare_hub/faetures/patient/auth/sign_up/view/widgets/heightinputdropdown.dart';
-import 'package:healthcare_hub/faetures/patient/auth/sign_up/view/widgets/weightinputdropdown.dart';
+import 'package:healthcare_hub/features/patient/auth/sign_up/view/widgets/heightinputdropdown.dart';
+import 'package:healthcare_hub/features/patient/auth/sign_up/view/widgets/weightinputdropdown.dart';
 import '../../../../../core/Const/app_colors.dart';
 import '../../../../../core/Const/app_images.dart';
 import '../../../../../core/app_routes/routes.dart';

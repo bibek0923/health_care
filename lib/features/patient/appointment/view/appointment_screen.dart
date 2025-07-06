@@ -39,11 +39,14 @@ class AppointmentScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 35,
-                   backgroundImage: doctor.imageUrl != null && doctor.imageUrl!.isNotEmpty
-      ? NetworkImage(doctor.imageUrl!)
-      : AssetImage(doctor.gender?.toLowerCase() == 'female'
-              ? AppImages.femalePatient
-              : AppImages.malePatient,),// use doctor image
+                    backgroundImage:
+                        doctor.imageUrl != null && doctor.imageUrl!.isNotEmpty
+                            ? NetworkImage(doctor.imageUrl!)
+                            : AssetImage(
+                              doctor.gender?.toLowerCase() == 'female'
+                                  ? AppImages.femalePatient
+                                  : AppImages.malePatient,
+                            ), // use doctor image
                   ),
                   Gap(18),
                   Column(
@@ -60,23 +63,10 @@ class AppointmentScreen extends StatelessWidget {
                         fontSize: 14,
                         textColor: AppColors.whitish,
                       ),
-                       CustomTextWidget(
-                            text: "Experience:  ${doctor.experience}+ Years",
-                            textColor: AppColors.whitish,
-                          ),
-                      // Row(
-                      //   children: [
-                      //     CustomTextWidget(
-                      //       text: "Experience: ${doctor.experience}",
-                      //       textColor: AppColors.white,
-                      //     ),
-                      //     Gap(8),
-                      //     CustomTextWidget(
-                      //       text: "${doctor.experience} + Years",
-                      //       textColor: AppColors.whitish,
-                      //     ),
-                      //   ],
-                      // ),
+                      CustomTextWidget(
+                        text: "Experience:  ${doctor.experience}+ Years",
+                        textColor: AppColors.whitish,
+                      ),
                     ],
                   ),
                 ],
@@ -195,13 +185,12 @@ class AppointmentScreen extends StatelessWidget {
             ),
             Gap(20),
             Obx(
-              () =>  CustomElevatedButton(
+              () => CustomElevatedButton(
                 isLoading: controller.isLoading.value,
-                onPress: () async{
-                 if( controller.formKey.currentState!.validate()){
-await controller.bookAppointment(doctor.doctorId!);
+                onPress: () async {
+                  if (controller.formKey.currentState!.validate()) {
+                    await controller.bookAppointment(doctor.doctorId!);
                   }
-                  
                 },
                 text: "Book Now",
               ),

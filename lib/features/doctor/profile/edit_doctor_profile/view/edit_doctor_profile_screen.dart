@@ -7,7 +7,7 @@ import 'package:healthcare_hub/core/Const/app_images.dart';
 import 'package:healthcare_hub/core/utils/app_sizes.dart';
 import 'package:healthcare_hub/core/widgets/custom_appbar.dart';
 import 'package:healthcare_hub/core/widgets/custom_text_widget.dart';
-import 'package:healthcare_hub/faetures/doctor/profile/edit_doctor_profile/controller/edit_doctor_profile_controller.dart';
+import 'package:healthcare_hub/features/doctor/profile/edit_doctor_profile/controller/edit_doctor_profile_controller.dart';
 import '../../../../../core/widgets/custom_elevated_button.dart';
 import '../../../../../core/widgets/custom_input_textfield.dart';
 
@@ -83,16 +83,7 @@ class DoctorEditProfileScreen extends StatelessWidget {
               numberKeyboard: true,
             ),
             Gap(12),
-            // CustomInputTextField(
-            //   hintText: "Phone Number",
-            //   textEditingController: controller.phoneNumberController,
-            //   emptyValueErrorText: "Enter phone number",
-            //   isValidator: false,
-            //   numberKeyboard: true,
-            //   maxLength: 10,
-            //   counterColor: AppColors.blackish,
-            // ),
-            // Gap(4),
+
             CustomInputTextField(
               labelText: "Experience",
               hintText: "Experience (Years)",
@@ -103,22 +94,9 @@ class DoctorEditProfileScreen extends StatelessWidget {
               // maxLength: 2,
               counterColor: AppColors.blackish,
             ),
-            // Gap(4),
-            // CustomInputTextField(
-            //   labelText: "Specialization",
-            //   hintText: "Specialization",
-            //   textEditingController: controller.specializationController,
-            //   emptyValueErrorText: "Enter specialization",
-            //   isValidator: false,
-            // ),
+
             Gap(12),
-            // CustomInputTextField(
-            //   labelText: "Hospital",
-            //   hintText: "Hospital Name",
-            //   textEditingController: controller.hospitalNameController,
-            //   emptyValueErrorText: "Enter hospital name",
-            //   isValidator: false,
-            // ),
+
             Obx(
               () => DropdownButtonFormField<String>(
                 value:
@@ -148,10 +126,6 @@ class DoctorEditProfileScreen extends StatelessWidget {
             Gap(12),
             Obx(
               () => DropdownButtonFormField<String>(
-                //  style: TextStyle(
-                //   fontSize: 13,
-                //   fontWeight: FontWeight.w400
-                //  ),
                 value:
                     controller.selectedSpecialization.value.isNotEmpty
                         ? controller.selectedSpecialization.value
@@ -207,176 +181,57 @@ class DoctorEditProfileScreen extends StatelessWidget {
               ),
             ),
 
-            // CustomInputTextField(
-            //   labelText: "Department Name",
-            //   hintText: "Department Name",
-            //   textEditingController: controller.departmentController,
-            //   emptyValueErrorText: "Enter department name",
-            //   isValidator: false,
-            // ),
-            // Gap(12),
-            // CustomInputTextField(
-
-            //   hintText: "Address",
-            //   textEditingController: controller.addressController,
-            //   emptyValueErrorText: "Enter address",
-            //   isValidator: false,
-            // ),
             Gap(12),
-            // Align(
-            //   alignment: Alignment.centerLeft,
-            //   child: CustomTextWidget(
-            //     text: "Degrees Name",
-            //     fontSize: 18,
-            //     fontWeight: FontWeight.w600,
-            //   ),
-            // ),
-            // Gap(8),
-            // Obx(
-            //   () => Wrap(
-            //     spacing: 8,
-            //     runSpacing: 8,
-            //     children: List.generate(controller.degreesName.length, (index) {
-            //       final degree = controller.degreesName[index];
-            //       return Chip(
-            //         label: CustomTextWidget(text: degree),
-            //         deleteIcon: Icon(Icons.close),
-            //         onDeleted: () => controller.removeDegree(index),
-            //         backgroundColor: AppColors.whitish,
-            //         labelStyle: GoogleFonts.poppins(color: AppColors.blue),
-            //         deleteIconColor: Colors.red,
-            //       );
-            //     }),
-            //   ),
-            // ),
-            // Gap(16),
 
-            // // TextField + Add Button
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       flex: 2,
-            //       child: CustomInputTextField(
-            //         hintText: "Add a degree",
-            //         textEditingController: controller.degreeTextController,
-            //         emptyValueErrorText: "Please enter a degree",
-            //         isValidator: false,
-            //       ),
-            //     ),
-            //     Gap(8),
-            //     Expanded(
-            //       child: CustomElevatedButton(
-            //         onPress: () {
-            //           controller.addDegree();
-            //         },
-            //         text: "Add",
-            //       ),
-            //     ),
-            //   ],
-            // ),
+            Obx(
+              () => DropdownButtonFormField<String>(
+                value:
+                    controller.selectedDegree.value.isNotEmpty
+                        ? controller.selectedDegree.value
+                        : null,
+                decoration: InputDecoration(
+                  filled: false,
+                  labelText: "Degree",
+                  fillColor: AppColors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(13),
+                  ),
+                  hintText: "Select Degree",
+                ),
+                items:
+                    controller.dummyDegrees
+                        .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                        .toList(),
+                onChanged: (value) {
+                  controller.selectedDegree.value = value ?? '';
+                  if (value != null && value.isNotEmpty) {
+                    controller.degreesNameList.add(value);
+                    controller.selectedDegree.value = '';
+                  }
+                },
+              ),
+            ),
 
-                Obx(
-                        () => DropdownButtonFormField<String>(
-                          value:
-                              controller.selectedDegree.value.isNotEmpty
-                                  ? controller.selectedDegree.value
-                                  : null,
-                          decoration: InputDecoration(
-                            filled: false,
-                            labelText: "Degree",
-                            fillColor: AppColors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(13),
-                            ),
-                            hintText: "Select Degree",
+            const Gap(12),
+
+            /// Degrees Chips
+            Obx(
+              () => Wrap(
+                spacing: 8,
+                children:
+                    controller.degreesNameList
+                        .map(
+                          (name) => Chip(
+                            label: Text(name),
+                            backgroundColor: AppColors.white,
+                            deleteIcon: Icon(Icons.close),
+                            onDeleted: () => controller.removeDegreeName(name),
                           ),
-                          items:
-                              controller.dummyDegrees
-                                  .map(
-                                    (e) => DropdownMenuItem(
-                                      value: e,
-                                      child: Text(e),
-                                    ),
-                                  )
-                                  .toList(),
-                          onChanged: (value) {
-                            controller.selectedDegree.value = value ?? '';
-                            if (value != null && value.isNotEmpty) {
-                              controller.degreesNameList.add(value);
-                              controller.selectedDegree.value = '';
-                            }
-                          },
-                        ),
-                      ),
+                        )
+                        .toList(),
+              ),
+            ),
 
-                      const Gap(12),
-
-                      /// Degrees Chips
-                      Obx(
-                        () => Wrap(
-                          spacing: 8,
-                          children:
-                              controller.degreesNameList
-                                  .map(
-                                    (name) => Chip(
-                                      label: Text(name),
-                                      backgroundColor: AppColors.white,
-                                      deleteIcon: Icon(Icons.close),
-                                      onDeleted:
-                                          () =>
-                                              controller.removeDegreeName(name),
-                                    ),
-                                  )
-                                  .toList(),
-                        ),
-                      ),
-
-            // Gap(16),
-            // Align(
-            //   alignment: Alignment.centerLeft,
-            //   child: CustomTextWidget(
-            //     text: "Certificates:",
-            //     fontSize: 18,
-            //     fontWeight: FontWeight.w600,
-            //   ),
-            // ),
-            // Gap(8),
-
-            // Obx(() => Column(
-            //   crossAxisAlignment: CrossAxisAlignment.start,
-            //   children: [
-            //     Wrap(
-            //       spacing: 8,
-            //       runSpacing: 8,
-            //       children: List.generate(controller.degreesUrl.length, (index) {
-            //         final url = controller.degreesUrl[index];
-            //         return Chip(
-            //           backgroundColor: AppColors.blueish,
-            //           label: Row(
-            //             mainAxisSize: MainAxisSize.min,
-            //             children: [
-            //               Icon(Icons.picture_as_pdf, color: AppColors.white),
-            //               Gap(6),
-            //               CustomTextWidget(
-            //                 text: '${index + 1} Certificate ',
-            //               ),
-            //             ],
-            //           ),
-            //           deleteIcon: Icon(Icons.close, color: AppColors.white),
-            //           onDeleted: () => controller.removeCertificate(index),
-            //         );
-            //       }),
-            //     ),
-            //     Gap(12),
-            //     CustomElevatedButton(
-            //         backgroundColor: AppColors.blueish,
-            //         onPress: () {
-
-            //       controller.pickAndAddCertificate();
-            //     }, text: "Upload Certificate"),
-            //   ],
-            // )),
-            // const Gap(12),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

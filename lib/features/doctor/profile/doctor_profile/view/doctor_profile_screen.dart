@@ -7,8 +7,8 @@ import 'package:healthcare_hub/core/utils/app_sizes.dart';
 import 'package:healthcare_hub/core/widgets/custom_appbar.dart';
 import 'package:healthcare_hub/core/widgets/custom_outline_button.dart';
 import 'package:healthcare_hub/data/models/doctor_model.dart';
-import 'package:healthcare_hub/faetures/doctor/profile/edit_doctor_profile/controller/edit_doctor_profile_controller.dart';
-import 'package:healthcare_hub/faetures/pdf_viewer/pdf_viewer_screen.dart';
+import 'package:healthcare_hub/features/doctor/profile/edit_doctor_profile/controller/edit_doctor_profile_controller.dart';
+import 'package:healthcare_hub/features/pdf_viewer/pdf_viewer_screen.dart';
 import '../../../../../core/Const/app_images.dart';
 import '../../../../../core/widgets/custom_appointment_container_doctor_side.dart';
 import '../../../../../core/widgets/custom_row.dart';
@@ -97,8 +97,7 @@ class DoctorProfileScreen extends StatelessWidget {
                         icon: CupertinoIcons.mail,
                       ),
                       Gap(8),
-                      // CustomRow(text: doctor.phoneNumber!, icon: CupertinoIcons.phone),
-                      // Gap(12),
+                      
                       Divider(),
                       CustomTextWidget(
                         text: "Hospital Info:",
@@ -113,16 +112,10 @@ class DoctorProfileScreen extends StatelessWidget {
                       Gap(8),
                       CustomRow(
                         text: "Department: ${doctor.department}",
-                        // icon: CupertinoIcons.building_2_fill,
+                        
                         icon: CupertinoIcons.heart,
                       ),
-                      // Gap(12),
-                      // Divider(),
-                      // CustomTextWidget(
-                      //   text: "Certificates:",
-                      //   fontSize: 17,
-                      //   fontWeight: FontWeight.w500,
-                      // ),
+                     
                       Gap(8),
                       ListView.separated(
                         shrinkWrap: true,

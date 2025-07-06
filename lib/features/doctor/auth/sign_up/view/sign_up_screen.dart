@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:healthcare_hub/core/widgets/custom_outline_button.dart';
 import '../../../../../core/Const/app_colors.dart';
 import '../../../../../core/Const/app_images.dart';
 import '../../../../../core/app_routes/routes.dart';
@@ -20,7 +18,6 @@ class DrSignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
@@ -144,7 +141,7 @@ class DrSignUpScreen extends StatelessWidget {
                         hintText: "Last name",
                         isFilled: true,
                         filledColor: AppColors.white,
-                        
+
                         isValidator: true,
                         emptyValueErrorText: "Please enter last name",
                         validator: controller.validateLastName,
@@ -206,6 +203,7 @@ class DrSignUpScreen extends StatelessWidget {
                         isFilled: true,
                         filledColor: AppColors.white,
                         emptyValueErrorText: "Please enter your License number",
+                        
                       ),
 
                       const Gap(16),
@@ -219,8 +217,7 @@ class DrSignUpScreen extends StatelessWidget {
                         isFilled: true,
                         numberKeyboard: true,
                         filledColor: AppColors.white,
-                        // maxLength: 4,
-                        // inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                       
                         emptyValueErrorText: "Please enter your experience",
                       ),
 
@@ -375,7 +372,6 @@ class DrSignUpScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15),
                             ),
                             hintText: "Select Specialization",
-                          
                           ),
                           validator:
                               (value) => controller.validateDropdown(
@@ -458,7 +454,7 @@ class DrSignUpScreen extends StatelessWidget {
 
                       const Gap(32),
 
-                      // const Gap(22),
+                   
                       Obx(
                         () => CustomElevatedButton(
                           isLoading: controller.isLoading.value,
@@ -466,41 +462,7 @@ class DrSignUpScreen extends StatelessWidget {
                           textColor: AppColors.blue,
                           onPress: () async {
                             if (controller.formKey.currentState!.validate()) {
-                              print(
-                                "firstname${controller.firstNameController.text}",
-                              );
-                              print("email ${controller.emailController.text}");
-                              print(
-                                "password${controller.createPasswordController.text}",
-                              );
-                              print("gender ${controller.selectedGender}");
-                              print(
-                                "license${controller.licenseController.text}",
-                              );
-                              print(
-                                "exp${controller.experienceController.text}",
-                              );
-                              print("about ${controller.aboutController.text}");
-                              print(
-                                "hospital${controller.selectedHospital.value}",
-                              );
-                              print(
-                                "specialization${controller.selectedSpecialization.value}",
-                              );
-                              print(
-                                "department${controller.selectedDepartment.value}",
-                              );
-                              // print("selected degree${controller.selectedDegree.value}");
-                              print(
-                                "length of degree list${controller.degreesNameList[0]}",
-                              );
-                              print(
-                                "length of degree list${controller.degreesNameList[1]}",
-                              );
-                              // print("length of degree list${controller.degreesNameList[2].length}");
-
                               await controller.doctorRegistration();
-                                // controller.refreshField();
                             } else {
                               controller.toast.showCustomToast(
                                 "Please fill correct values in each fields",

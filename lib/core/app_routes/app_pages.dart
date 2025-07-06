@@ -1,30 +1,30 @@
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:healthcare_hub/core/app_routes/routes.dart';
-import 'package:healthcare_hub/faetures/ai/view/ai_screen.dart';
+import 'package:healthcare_hub/features/ai/view/ai_screen.dart';
 // import 'package:healthcare_hub/faetures/appointment_confirmation/appointment_confirmation.dart';
-import 'package:healthcare_hub/faetures/doctor/appointment_details/view/appointment_details_screen.dart';
-import 'package:healthcare_hub/faetures/doctor/auth/forget_password/view/forget_password_screen.dart';
-import 'package:healthcare_hub/faetures/doctor/auth/personal_info/view/personal_info_screen.dart';
-import 'package:healthcare_hub/faetures/doctor/auth/sign_up/view/sign_up_screen.dart';
-import 'package:healthcare_hub/faetures/doctor/auth/signin/view/signin_screen.dart';
-import 'package:healthcare_hub/faetures/doctor/home/view/home_screen.dart';
-import 'package:healthcare_hub/faetures/doctor/patient_details/view/patient_details_screen.dart';
-import 'package:healthcare_hub/faetures/doctor/profile/doctor_profile/view/doctor_profile_screen.dart';
-import 'package:healthcare_hub/faetures/patient/auth/forget_password/view/forget_password_screen.dart';
-import 'package:healthcare_hub/faetures/patient/navbar_appointment_screen/pages/nav_bar_appointmentScreen.dart';
-import '../../faetures/doctor/auth/other_info/view/other_info_screen.dart';
-import '../../faetures/patient/appointment/pages/appointment_details/view/appointment_details_screen.dart';
-import '../../faetures/patient/appointment/view/appointment_screen.dart';
-import '../../faetures/patient/auth/guardian_info/view/guardian_info_screen.dart';
-import '../../faetures/patient/auth/personal_info/view/personal_info_screen.dart';
-import '../../faetures/patient/auth/sign_up/view/sign_up_screen.dart';
-import '../../faetures/patient/auth/signin/view/signin_screen.dart';
-import '../../faetures/patient/doctor_details/view/doctor_details_screen.dart';
-import '../../faetures/patient/home/view/home_screen.dart';
-import '../../faetures/patient/profile/patient_profile/view/patient_profile_screen.dart';
-import '../../faetures/splash/view/splash_screen.dart';
-import '../../faetures/user_type/view/user_type_screen.dart';
+import 'package:healthcare_hub/features/doctor/appointment_details/view/appointment_details_screen.dart';
+import 'package:healthcare_hub/features/doctor/auth/forget_password/view/forget_password_screen.dart';
+// import 'package:healthcare_hub/features/doctor/auth/personal_info/view/personal_info_screen.dart';
+import 'package:healthcare_hub/features/doctor/auth/sign_up/view/sign_up_screen.dart';
+import 'package:healthcare_hub/features/doctor/auth/signin/view/signin_screen.dart';
+import 'package:healthcare_hub/features/doctor/home/view/home_screen.dart';
+import 'package:healthcare_hub/features/doctor/patient_details/view/patient_details_screen.dart';
+import 'package:healthcare_hub/features/doctor/profile/doctor_profile/view/doctor_profile_screen.dart';
+import 'package:healthcare_hub/features/patient/auth/forget_password/view/forget_password_screen.dart';
+import 'package:healthcare_hub/features/patient/home/navbar_appointment_screen/pages/nav_bar_appointmentScreen.dart';
+// import '../../features/doctor/auth/other_info/view/other_info_screen.dart';
+import '../../features/patient/appointment/pages/appointment_details/view/appointment_details_screen.dart';
+import '../../features/patient/appointment/view/appointment_screen.dart';
+// import '../../features/patient/auth/guardian_info/view/guardian_info_screen.dart';
+// import '../../features/patient/auth/personal_info/view/personal_info_screen.dart';
+import '../../features/patient/auth/sign_up/view/sign_up_screen.dart';
+import '../../features/patient/auth/signin/view/signin_screen.dart';
+import '../../features/patient/doctor_details/view/doctor_details_screen.dart';
+import '../../features/patient/home/view/home_screen.dart';
+import '../../features/patient/profile/patient_profile/view/patient_profile_screen.dart';
+import '../../features/splash/view/splash_screen.dart';
+import '../../features/user_type/view/user_type_screen.dart';
 
 class AppPages {
   static final routes = [
@@ -83,13 +83,13 @@ class AppPages {
       curve: Curves.linear,
       transitionDuration: const Duration(microseconds: 200),
     ),
-    GetPage(
-      name: AppRoutes.PERSONALINFOSCREEN,
-      page: () => PersonalInfoScreen(),
-      transition: Transition.fade,
-      curve: Curves.linear,
-      transitionDuration: const Duration(microseconds: 200),
-    ),
+    // GetPage(
+    //   name: AppRoutes.PERSONALINFOSCREEN,
+    //   page: () => PersonalInfoScreen(),
+    //   transition: Transition.fade,
+    //   curve: Curves.linear,
+    //   transitionDuration: const Duration(microseconds: 200),
+    // ),
     GetPage(
       name: AppRoutes.APPOINTMENTSCREEN,
       page: () => AppointmentScreen(),
@@ -104,21 +104,21 @@ class AppPages {
       curve: Curves.linear,
       transitionDuration: const Duration(microseconds: 200),
     ),
-    GetPage(
-      name: AppRoutes.GUARDIANINFOSCREEN,
-      page: () => GuardianInfoScreen(),
-      transition: Transition.fade,
-      curve: Curves.linear,
-      transitionDuration: const Duration(microseconds: 200),
-    ),
+    // GetPage(
+    //   name: AppRoutes.GUARDIANINFOSCREEN,
+    //   page: () => GuardianInfoScreen(),
+    //   transition: Transition.fade,
+    //   curve: Curves.linear,
+    //   transitionDuration: const Duration(microseconds: 200),
+    // ),
 
-    GetPage(
-      name: AppRoutes.DROTHERINFOSCREEN,
-      page: () => DrOtherInfoScreen(),
-      transition: Transition.fade,
-      curve: Curves.linear,
-      transitionDuration: const Duration(microseconds: 200),
-    ),
+    // GetPage(
+    //   name: AppRoutes.DROTHERINFOSCREEN,
+    //   page: () => DrOtherInfoScreen(),
+    //   transition: Transition.fade,
+    //   curve: Curves.linear,
+    //   transitionDuration: const Duration(microseconds: 200),
+    // ),
     GetPage(
       name: AppRoutes.DRSIGNINSCREEN,
       page: () => DrSignInScreen(),
@@ -133,13 +133,13 @@ class AppPages {
       curve: Curves.linear,
       transitionDuration: const Duration(microseconds: 200),
     ),
-    GetPage(
-      name: AppRoutes.DRPERSONALINFOSCREEN,
-      page: () => DrPersonalInfoScreen(),
-      transition: Transition.fade,
-      curve: Curves.linear,
-      transitionDuration: const Duration(microseconds: 200),
-    ),
+    // GetPage(
+    //   name: AppRoutes.DRPERSONALINFOSCREEN,
+    //   page: () => DrPersonalInfoScreen(),
+    //   transition: Transition.fade,
+    //   curve: Curves.linear,
+    //   transitionDuration: const Duration(microseconds: 200),
+    // ),
     GetPage(
       name: AppRoutes.DRFORGETPASSWORDSCREEN,
       page: () => DrForgetPasswordScreen(),
@@ -190,10 +190,12 @@ class AppPages {
       transitionDuration: const Duration(microseconds: 200),
     ),
 
-    // GetPage(
-    //   name: AppRoutes.APPOINTMENT_CONFIRMATION_SCREEN,
-    //   page: () => AppointmentConfirmationScreen(),
-    // ),
-    GetPage(name: AppRoutes.NAVAPPOINTMENTSCREEN, page: ()=>NavAppointmentScreen())
+    GetPage(
+      name: AppRoutes.NAVAPPOINTMENTSCREEN,
+      page: () => NavAppointmentScreen(),
+      transition: Transition.fade,
+      curve: Curves.linear,
+      transitionDuration: const Duration(microseconds: 200),
+    ),
   ];
 }

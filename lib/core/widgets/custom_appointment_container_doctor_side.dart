@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:gap/gap.dart';
 import 'package:healthcare_hub/core/app_routes/routes.dart';
 import 'package:healthcare_hub/data/models/appointment_model.dart';
-import 'package:healthcare_hub/data/models/doctor_model.dart';
 import 'package:healthcare_hub/data/models/patient_model.dart';
 import 'package:intl/intl.dart';
 import '../Const/app_colors.dart';

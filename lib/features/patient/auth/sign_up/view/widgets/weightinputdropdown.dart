@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthcare_hub/core/Const/app_colors.dart';
-import 'package:healthcare_hub/faetures/patient/auth/sign_up/controller/signup_controller.dart';
+import 'package:healthcare_hub/features/patient/auth/sign_up/controller/signup_controller.dart';
 
 class WeightDropdown extends StatelessWidget {
   WeightDropdown({super.key});

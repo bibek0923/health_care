@@ -49,10 +49,7 @@ RxBool showHeightError = false.obs;
       showHeightError.value = true;
       return ''; // Return empty string to hide default error
     }
-    // else if(value.length>3){
-    //   heightErrorMessage='Enter Valid Value';
-    //   return '';
-    // }
+    
     else {
       showHeightError.value = false;
       return null;
@@ -64,10 +61,7 @@ RxBool showHeightError = false.obs;
       showWeightError.value = true;
       return ''; // Return empty string to hide default error
     }
-    // else if(value.length>3){
-    //   heightErrorMessage='Enter Valid Value';
-    //   return '';
-    // }
+  
     else {
       showWeightError.value = false;
       return null;
@@ -203,7 +197,7 @@ RxBool showHeightError = false.obs;
 
       Get.back();
     } catch (e) {
-      print("Error in updateProfile: $e");
+     
       rethrow;
     } finally {
       isLoading.value = false;
