@@ -27,4 +27,8 @@ class AppRoutes{
   static const String DOCTORPROFILESCREEN = "/doctorProfileScreen";
   static const String PATIENTDETAILSSCREEN = "/patientDetailsScreen";
   static const String DRAPPOINTMENTDETAILSSCREEN = "/drAppointmentDetailsScreen";
+
+  static const String APPOINTMENT_CONFIRMATION_SCREEN = '/appointment-confirmation';
+
+  static const String NAVAPPOINTMENTSCREEN ='/navbar-appointment-screen';
 }

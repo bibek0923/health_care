@@ -72,11 +72,11 @@ class UserRepository {
   /// Maps Firebase authentication errors to user-friendly messages.
   String getAuthErrorMessage(FirebaseAuthException e) {
     switch (e.code) {
-      case 'invalid-email':
+      case 'auth/Invalid-email':
         return 'The email address is invalid.';
       case 'user-not-found':
         return 'No user found for this email.';
-      case 'wrong-password':
+      case 'auth/wrong-password':
         return 'Incorrect password.';
       case 'email-already-in-use':
         return 'This email is already registered.';

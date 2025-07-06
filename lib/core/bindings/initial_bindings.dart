@@ -8,6 +8,7 @@ import 'package:healthcare_hub/faetures/doctor/home/controllers/home_controller.
 import 'package:healthcare_hub/faetures/doctor/patient_details/controller/patient_details_controller.dart';
 import 'package:healthcare_hub/faetures/doctor/profile/doctor_profile/controller/doctor_profile_controller.dart';
 import 'package:healthcare_hub/faetures/doctor/profile/edit_doctor_profile/controller/edit_doctor_profile_controller.dart';
+import 'package:healthcare_hub/faetures/patient/navbar_appointment_screen/controllers/navbar_appointment_controller.dart';
 import '../../faetures/doctor/appointment_details/controller/appointment_details_controller.dart';
 import '../../faetures/doctor/auth/other_info/controller/other_info_controller.dart';
 import '../../faetures/patient/appointment/controller/appointment_controller.dart';
@@ -87,5 +88,8 @@ class InitialBindings extends Bindings {
 
     Get.put(AiChatController());
     Get.lazyPut(() => AiChatController());
+
+    Get.put(NavbarAppointmentController());
+    Get.lazyPut(()=>NavbarAppointmentController());
   }
 }

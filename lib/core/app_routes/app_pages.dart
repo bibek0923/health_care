@@ -2,6 +2,7 @@ import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:healthcare_hub/core/app_routes/routes.dart';
 import 'package:healthcare_hub/faetures/ai/view/ai_screen.dart';
+// import 'package:healthcare_hub/faetures/appointment_confirmation/appointment_confirmation.dart';
 import 'package:healthcare_hub/faetures/doctor/appointment_details/view/appointment_details_screen.dart';
 import 'package:healthcare_hub/faetures/doctor/auth/forget_password/view/forget_password_screen.dart';
 import 'package:healthcare_hub/faetures/doctor/auth/personal_info/view/personal_info_screen.dart';
@@ -11,6 +12,7 @@ import 'package:healthcare_hub/faetures/doctor/home/view/home_screen.dart';
 import 'package:healthcare_hub/faetures/doctor/patient_details/view/patient_details_screen.dart';
 import 'package:healthcare_hub/faetures/doctor/profile/doctor_profile/view/doctor_profile_screen.dart';
 import 'package:healthcare_hub/faetures/patient/auth/forget_password/view/forget_password_screen.dart';
+import 'package:healthcare_hub/faetures/patient/navbar_appointment_screen/pages/nav_bar_appointmentScreen.dart';
 import '../../faetures/doctor/auth/other_info/view/other_info_screen.dart';
 import '../../faetures/patient/appointment/pages/appointment_details/view/appointment_details_screen.dart';
 import '../../faetures/patient/appointment/view/appointment_screen.dart';
@@ -187,5 +189,11 @@ class AppPages {
       curve: Curves.linear,
       transitionDuration: const Duration(microseconds: 200),
     ),
+
+    // GetPage(
+    //   name: AppRoutes.APPOINTMENT_CONFIRMATION_SCREEN,
+    //   page: () => AppointmentConfirmationScreen(),
+    // ),
+    GetPage(name: AppRoutes.NAVAPPOINTMENTSCREEN, page: ()=>NavAppointmentScreen())
   ];
 }

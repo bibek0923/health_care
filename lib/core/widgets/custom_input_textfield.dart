@@ -67,7 +67,7 @@
 //         ),
 //       ),
 //       child: TextFormField(
-        
+
 //         controller: widget.textEditingController,
 //         onChanged: widget.onChange,
 //         maxLength: widget.maxLength == 0 ? null : widget.maxLength,
@@ -84,7 +84,7 @@
 //         maxLines: widget.maxLines,
 //         decoration: InputDecoration(
 //           label: Text("Date of birth"),
-        
+
 //           filled: widget.isFilled,
 //           fillColor: widget.filledColor,
 //           contentPadding: EdgeInsets.symmetric(
@@ -195,6 +195,8 @@ class CustomInputTextField extends StatefulWidget {
     this.onChange,
     this.maxLength = 0,
     this.counterColor = AppColors.whitish,
+    this.textCapitalization=TextCapitalization.none,
+
   });
 
   final String hintText;
@@ -217,6 +219,7 @@ class CustomInputTextField extends StatefulWidget {
   final int maxLines;
   final bool borderRestriction;
   final Color counterColor;
+final TextCapitalization textCapitalization;
 
   @override
   State<CustomInputTextField> createState() => _CustomInputTextFieldState();
@@ -232,20 +235,24 @@ class _CustomInputTextFieldState extends State<CustomInputTextField> {
   }
 
   OutlineInputBorder _buildBorder(Color color) => OutlineInputBorder(
-        borderRadius: BorderRadius.circular(widget.borderRadius),
-        borderSide: widget.isFilled && widget.borderRestriction
+    borderRadius: BorderRadius.circular(widget.borderRadius),
+    borderSide:
+        widget.isFilled && widget.borderRestriction
             ? BorderSide.none
             : BorderSide(color: color, width: 0.6),
-      );
+  );
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textCapitalization: widget.textCapitalization,
       controller: widget.textEditingController,
       onChanged: widget.onChange,
       maxLength: widget.maxLength == 0 ? null : widget.maxLength,
       keyboardType:
-          widget.numberKeyboard ? TextInputType.number : TextInputType.text,
+          widget.numberKeyboard
+              ? TextInputType.number
+              : TextInputType.visiblePassword,
       obscureText: widget.isObsecure ? isObscured : false,
       maxLines: widget.maxLines,
       cursorColor: AppColors.blue,
@@ -263,20 +270,25 @@ class _CustomInputTextFieldState extends State<CustomInputTextField> {
         filled: widget.isFilled,
         fillColor: widget.filledColor,
         counterStyle: GoogleFonts.poppins(color: widget.counterColor),
-        contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 14,
+          horizontal: 18,
+        ),
         isDense: true,
-        prefixIcon: widget.prefixIcon
-            ? const Icon(Icons.search, color: AppColors.blackish)
-            : null,
-        suffixIcon: widget.isObsecure
-            ? IconButton(
-                icon: Icon(
-                  isObscured ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
-                  color: AppColors.blackish,
-                ),
-                onPressed: () => setState(() => isObscured = !isObscured),
-              )
-            : null,
+        prefixIcon:
+            widget.prefixIcon
+                ? const Icon(Icons.search, color: AppColors.blackish)
+                : null,
+        suffixIcon:
+            widget.isObsecure
+                ? IconButton(
+                  icon: Icon(
+                    isObscured ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
+                    color: AppColors.blackish,
+                  ),
+                  onPressed: () => setState(() => isObscured = !isObscured),
+                )
+                : null,
         hintText: widget.hintText,
         hintStyle: GoogleFonts.poppins(
           fontSize: 14,
@@ -289,15 +301,16 @@ class _CustomInputTextFieldState extends State<CustomInputTextField> {
         errorBorder: _buildBorder(AppColors.red),
         focusedErrorBorder: _buildBorder(AppColors.red),
       ),
-      validator: widget.isValidator
-          ? widget.validator ??
-              (value) {
-                if (value == null || value.trim().isEmpty) {
-                  return widget.emptyValueErrorText;
-                }
-                return null;
-              }
-          : null,
+      validator:
+          widget.isValidator
+              ? widget.validator ??
+                  (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return widget.emptyValueErrorText;
+                    }
+                    return null;
+                  }
+              : null,
     );
   }
 }

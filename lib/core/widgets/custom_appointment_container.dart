@@ -70,6 +70,7 @@ class CustomAppointmentContainer extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 CustomTextWidget(
+                  
                   text: appointment.title,
                   fontWeight: FontWeight.w500,
                 ),

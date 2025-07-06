@@ -20,6 +20,8 @@ class PatientModel {
   final String? guardianRelationShip;
   final String? guardianGender;
   final String? insuranceCard;
+  final String? heightUnit;
+  final String? weightUnit;
 
   PatientModel({
     this.id,
@@ -43,6 +45,8 @@ class PatientModel {
     this.guardianName,
     this.guardianIdCard,
     this.guardianPhoneNumber,
+    this.heightUnit,
+    this.weightUnit,
   });
 
   /// Convert the model to Firestore map
@@ -69,6 +73,8 @@ class PatientModel {
       'guardianName': guardianName,
       'guardianIdCard': guardianIdCard,
       'guardianPhoneNumber': guardianPhoneNumber,
+      'heightUnit': heightUnit,
+      'weightUnit': weightUnit,
     };
   }
 
@@ -96,6 +102,8 @@ class PatientModel {
       'guardianName': guardianName,
       'guardianIdCard': guardianIdCard,
       'guardianPhoneNumber': guardianPhoneNumber,
+      'heightUnit': heightUnit,
+      'weightUnit': weightUnit,
     };
   }
 
@@ -123,6 +131,8 @@ class PatientModel {
       guardianName: map['guardianName'] ?? '',
       guardianIdCard: map['guardianIdCard'] ?? '',
       guardianPhoneNumber: map['guardianPhoneNumber'] ?? '',
+      weightUnit: map['weightUnit'] ?? '',
+      heightUnit: map['heightUnit'] ?? '',
     );
   }
 
@@ -150,6 +160,8 @@ class PatientModel {
       guardianName: json['guardianName'] ?? '',
       guardianIdCard: json['guardianIdCard'] ?? '',
       guardianPhoneNumber: json['guardianPhoneNumber'] ?? '',
+      weightUnit: json['weightUnit'] ?? '',
+      heightUnit: json['heightUnit'] ?? '',
     );
   }
 }

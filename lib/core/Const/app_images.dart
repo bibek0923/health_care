@@ -7,5 +7,7 @@ class AppImages {
   static  get ai => 'artificial-intelligence'.toPng;
   static  get maleDr => 'maledoctor'.toPng;
   static  get femaleDr => 'femaleDoctor'.toPng;
+  static get femalePatient => 'female_pat'.toJpg;
+  static get malePatient => 'male_patient'.toPng;
 
 }

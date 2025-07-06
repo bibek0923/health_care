@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:healthcare_hub/data/models/patient_model.dart';
 import 'package:uuid/uuid.dart';
 import '../../core/widgets/custom_toast_show.dart';
 import '../shared_preference/shared_preference_services.dart';
@@ -206,7 +207,17 @@ class FireStoreRepository {
       return null;
     }
   }
-
+Future<PatientModel?> getPatientById(String patientId) async {
+    try {
+      DocumentSnapshot doc = await fireStore.collection('healthCare_hub').doc(patientId).get();
+      if (doc.exists) {
+        return PatientModel.fromMap(doc.data() as Map<String, dynamic>);
+      }
+    } catch (e) {
+      print("Error fetching patient: $e");
+    }
+    return null;
+  }
 
 }
 
