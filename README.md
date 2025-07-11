@@ -1,6 +1,5 @@
 <<<<<<< HEAD
-# HealthCare-Hub
-=======
+
 # healthcare_hub
 
 A new Flutter project.
